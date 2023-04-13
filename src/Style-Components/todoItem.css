@@ -1,0 +1,29 @@
+.checkAndClose{
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: .5rem; */
+    margin: 1rem 1rem 0rem 1rem;
+}
+
+li p{
+    /* padding: .5rem; */
+    margin: 0 auto;
+    width: 22rem;
+    white-space: normal;
+    
+    overflow: scroll;
+}
+.todoItem-p--completed{
+    text-decoration: line-through;
+}
+.Icon{
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.icon-check--active {
+    color: #4caf50;
+}
+.icon-delate:hover{
+    color: red;
+}

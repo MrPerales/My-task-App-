@@ -1,0 +1,22 @@
+.input{
+    display: flex;
+    justify-content: center;
+    width: 36rem;
+}
+.inputSearch{
+    width: 15rem;
+    height: 2.5rem;
+    margin-top: 1.5rem;
+    border-radius: .5rem;
+    padding-left: .5rem;
+    font-family: sans-serif;
+    
+}
+
+.searchBtn{
+    width:2rem;
+    height: 2.5rem;
+    margin-top: 1.5rem;
+    margin-left: .3rem;
+    border-radius: .5rem;
+}

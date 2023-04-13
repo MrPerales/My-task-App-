@@ -1,0 +1,22 @@
+
+.createBtn{
+    position: fixed;
+    right: 3rem;
+    bottom: 1rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background-color: #61DAFA;
+    color: #fafafa;
+    border: none;
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+    transform: rotate(0);
+    transition: .3s ease;
+}
+.createBtn:hover{
+    transform: rotate(224deg);
+}

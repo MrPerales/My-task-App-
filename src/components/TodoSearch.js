@@ -1,8 +1,12 @@
 import React from "react";
+import '../Style-Components/todoSearch.css';
 
 function TodoSearch(){
     return(
-        <input placeholder="Hi"></input>
+        <div className="input">
+            <input className="inputSearch" placeholder="search task"></input>
+            <button className="searchBtn">🔍</button>
+        </div>
     );
 }
 

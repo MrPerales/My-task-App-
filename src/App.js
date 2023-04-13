@@ -1,4 +1,5 @@
 // import './App.css';
+import { TodoHeader } from "./components/TodoHeader";
 import { TodoCounter } from "./components/TodoCounter";
 import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
@@ -9,28 +10,33 @@ import { TodoItem } from "./components/TodoItem";
 const toDos = [
   {
     text: 'cut',
-    competed: false,
+    completed: true, 
   },
   {
     text: 'pay rent',
-    competed: false,
+    completed: false,
   },
   {
     text: 'meeting',
-    competed: false,
+    completed: false,
   }
 ];
 
 function App() {
   return (
     <>
+      <TodoHeader/>
       <TodoCounter/>
 
       <TodoSearch/>
 
       <TodoList>
         {toDos.map(item =>(
-          <TodoItem key={item.text} text={item.text}/>
+          <TodoItem
+            key={item.text}
+            text={item.text}
+            completed={item.completed}
+            />
           ))
         }
       
