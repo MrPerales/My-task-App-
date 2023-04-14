@@ -4,25 +4,18 @@ import '../Style-Components/todoItem.css'
 function TodoItem(props){
 
     //  methods for onCLick 
-    const onCompleted= ()=>{
-        alert(`Congratulations you completed the task ${props.text}`)
-    }
-    const onDelete=()=>{
-        alert(`You deleted the task ${props.text} :( `)
-    }
-
     return(
         <li>
             <div className="checkAndClose">
                 <span
                     className={`Icon icon-check ${props.completed && 'icon-check--active'}` }
-                    onClick={onCompleted}
+                    onClick={props.onComplete}
                 >
                     ✓
                 </span>
                 <span
                     className="Icon icon-delate" 
-                    onClick={onDelete}
+                    onClick={props.onDelete}
                 >
                     X
                 </span>
