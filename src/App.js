@@ -1,7 +1,7 @@
 // import './App.css';
 import React from "react";
 import { AppUI } from "./AppUI.js";
-
+import {useLocalStorage} from './Hooks/useLocalStorage.js'
 
 // const defaultToDos = [
 //   {
@@ -33,24 +33,10 @@ import { AppUI } from "./AppUI.js";
 // ];
 
 function App() {
-
-  //localStorage
-  const localStorageToDos = localStorage.getItem('ToDos_V1');
-  let parsedToDos;
-  //para usuarios nuevos no tienen ningun ToDo 
-  if (!localStorageToDos) {
-    //como no han creado un ToDo dejamos un array vacio 
-    localStorage.setItem('ToDos_V1', JSON.stringify([]))
-    parsedToDos = [];
-  } else {
-    //ya que tengan solo 1 ToDo esta en el local storage pero lo transformamos en array
-    parsedToDos = JSON.parse(localStorageToDos);
-  }
-
-
+  //hooks 
+  const [toDos,saveToDos]=useLocalStorage('ToDos_V1',[]);
 
   //    [array, function] 
-  const [toDos, setToDos] = React.useState(parsedToDos);
   const [searchValue, setSearchValue] = React.useState('');
  
   // variables to count the tasks
@@ -71,18 +57,6 @@ function App() {
   } else {          // si no se hace ninguna busqueda manda el defaultArray:
     searchedToDos = toDos;
   }
-
-  // save Task 
-  const saveToDos=(newToDos)=>{
-    //convertimos el array en string 
-    const stringifiedToDos=JSON.stringify(newToDos);
-    //guardamos la info en ToDos_v1
-    localStorage.setItem('ToDos_V1',stringifiedToDos);
-    //modificamos el estado con el metodo seToDos
-    setToDos(newToDos);
-  }
-
-
 
   //  add check
   const completeToDo = (text) => {
