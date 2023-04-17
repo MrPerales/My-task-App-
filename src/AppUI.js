@@ -8,6 +8,13 @@ import { TodoItem } from "./components/TodoItem.js";
 import { ToDoContext } from "./ToDoContext/ToDoContext.js";
 
 function AppUI() {
+
+    const { error,
+        loading,
+        searchedToDos,
+        completeToDo,
+        deleteToDo } = React.useContext(ToDoContext);
+
     return (
         <>
             <TodoHeader />
@@ -15,30 +22,29 @@ function AppUI() {
 
             <TodoSearch />
 
-            <ToDoContext.Consumer >
-                {({error,loading,searchedToDos,completeToDo,deleteToDo}) => (
-                    <TodoList>
-                        {loading && <p>loading....</p>}
-                        {error && <p>Fatal Error....</p>}
-                        {(!loading && !searchedToDos.length) && <p>create your first Task</p>}
+
+
+            <TodoList>
+                {loading && <p>loading....</p>}
+                {error && <p>Fatal Error....</p>}
+                {(!loading && !searchedToDos.length) && <p>create your first Task</p>}
 
 
 
-                        {searchedToDos.map(item => (
-                            <TodoItem
-                                key={item.text}
-                                text={item.text}
-                                completed={item.completed}
-                                onComplete={() => completeToDo(item.text)}
-                                onDelete={() => deleteToDo(item.text)}
-                            />
-                        ))
-                        }
+                {searchedToDos.map(item => (
+                    <TodoItem
+                        key={item.text}
+                        text={item.text}
+                        completed={item.completed}
+                        onComplete={() => completeToDo(item.text)}
+                        onDelete={() => deleteToDo(item.text)}
+                    />
+                ))
+                }
 
-                    </TodoList>
+            </TodoList>
 
-                )}
-            </ToDoContext.Consumer>
+
 
 
             <CreateTodoButton />
