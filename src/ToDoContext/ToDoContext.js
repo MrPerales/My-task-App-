@@ -13,6 +13,7 @@ function ToDoProvider(props){
     error
   }=useLocalStorage('ToDos_V1',[]);
 
+  const [openModal,setOpenModal]=React.useState(false);
   //    [array, function] 
   const [searchValue, setSearchValue] = React.useState('');
  
@@ -68,6 +69,8 @@ function ToDoProvider(props){
             searchedToDos,
             completeToDo,
             deleteToDo,
+            openModal,
+            setOpenModal,
         }}>
             {props.children};
         </ToDoContext.Provider>

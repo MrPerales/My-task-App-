@@ -6,6 +6,7 @@ import { TodoList } from "./components/TodoList.js";
 import { CreateTodoButton } from "./components/CreateTodoButton.js";
 import { TodoItem } from "./components/TodoItem.js";
 import { ToDoContext } from "./ToDoContext/ToDoContext.js";
+import { Modal } from "./Modal/index.js";
 
 function AppUI() {
 
@@ -13,7 +14,10 @@ function AppUI() {
         loading,
         searchedToDos,
         completeToDo,
-        deleteToDo } = React.useContext(ToDoContext);
+        deleteToDo,
+        openModal,
+        setOpenModal
+    } = React.useContext(ToDoContext);
 
     return (
         <>
@@ -44,12 +48,19 @@ function AppUI() {
 
             </TodoList>
 
+            {/* if openModal is True render that*/}
+            {openModal && (
+                <Modal>
+                    <p>Task</p>
+                </Modal>
+            )}
 
 
 
-            <CreateTodoButton />
-
-
+            <CreateTodoButton 
+                setOpenModal={setOpenModal}
+                openModal={openModal}
+            />
 
         </>
     );
