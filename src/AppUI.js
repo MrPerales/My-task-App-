@@ -7,7 +7,7 @@ import { CreateTodoButton } from "./components/CreateTodoButton.js";
 import { TodoItem } from "./components/TodoItem.js";
 import { ToDoContext } from "./ToDoContext/ToDoContext.js";
 import { Modal } from "./Modal/index.js";
-
+import { TodoForm } from "./components/TodoForm.js";
 function AppUI() {
 
     const { error,
@@ -51,7 +51,7 @@ function AppUI() {
             {/* if openModal is True render that*/}
             {openModal && (
                 <Modal>
-                    <p>Task</p>
+                    <TodoForm/>
                 </Modal>
             )}
 

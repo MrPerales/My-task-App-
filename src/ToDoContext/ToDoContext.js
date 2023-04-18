@@ -1,22 +1,22 @@
 import React from "react";
 import { useLocalStorage } from "../Hooks/useLocalStorage";
 
-const ToDoContext=React.createContext();
+const ToDoContext = React.createContext();
 
-function ToDoProvider(props){
+function ToDoProvider(props) {
 
-      //hooks 
+  //hooks 
   const {
-    item:toDos,
-    saveItem:saveToDos,
+    item: toDos,
+    saveToDos:saveToDos, // saveItem:saveToDos
     loading,
     error
-  }=useLocalStorage('ToDos_V1',[]);
+  } = useLocalStorage('ToDos_V1', []);
 
-  const [openModal,setOpenModal]=React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
   //    [array, function] 
   const [searchValue, setSearchValue] = React.useState('');
- 
+
   // variables to count the tasks
   const completedTask = toDos.filter(item => !!item.completed).length;
   const totalTask = toDos.length;
@@ -35,7 +35,15 @@ function ToDoProvider(props){
   } else {          // si no se hace ninguna busqueda manda el defaultArray:
     searchedToDos = toDos;
   }
-
+  // add ToDo
+  const addToDo = (text) => {
+    const newToDos = [...toDos];
+    newToDos.push({
+      completed: false,
+      text,
+    });
+    saveToDos(newToDos);
+  }
   //  add check
   const completeToDo = (text) => {
     // search the index
@@ -58,23 +66,25 @@ function ToDoProvider(props){
     saveToDos(newToDos)
   }
 
-    return(
-        <ToDoContext.Provider value={{
-            error,
-            loading,
-            totalTask,
-            completedTask,
-            searchValue,
-            setSearchValue,
-            searchedToDos,
-            completeToDo,
-            deleteToDo,
-            openModal,
-            setOpenModal,
-        }}>
-            {props.children};
-        </ToDoContext.Provider>
-    );
+  return (
+    <ToDoContext.Provider value={{
+      error,
+      loading,
+      totalTask,
+      completedTask,
+      searchValue,
+      setSearchValue,
+      searchedToDos,
+      completeToDo,
+      deleteToDo,
+      openModal,
+      setOpenModal,
+      // saveToDos,
+      addToDo,
+    }}>
+      {props.children};
+    </ToDoContext.Provider>
+  );
 }
 
-export {ToDoContext,ToDoProvider};
+export { ToDoContext, ToDoProvider };
