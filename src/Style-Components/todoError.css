@@ -1,0 +1,16 @@
+.ErrorContainer{
+    width: 36rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imgError{
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+.imgError img{
+    width: 100%;
+}

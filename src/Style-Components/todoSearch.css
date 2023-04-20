@@ -7,10 +7,11 @@
     width: 15rem;
     height: 2.5rem;
     margin-top: 1.5rem;
-    border-radius: .5rem;
-    padding-left: .5rem;
+    border-radius: .3rem;
     font-family: sans-serif;
-    
+    border: none;
+    border-bottom: .1rem solid ;
+    text-align: center;
 }
 
 .searchBtn{

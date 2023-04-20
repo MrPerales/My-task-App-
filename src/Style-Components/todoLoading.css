@@ -1,0 +1,23 @@
+.loadingContainer{
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    gap: 1.5rem;
+}
+.loadingTodo{
+    width: 100%;
+    height: 7rem;
+    border-radius: 1rem;
+    background:linear-gradient(0deg,rgba(250,250,250,1),rgb(200,199,199)) ;
+    animation: loadingAnimation 3s ease-in-out infinite;
+    margin-top: 1rem;
+}
+@keyframes loadingAnimation {
+    0%,100%{
+        opacity: 100%;
+    }
+    50%{
+        opacity: 0%;
+    }
+    
+}

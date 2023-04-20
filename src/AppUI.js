@@ -8,6 +8,9 @@ import { TodoItem } from "./components/TodoItem.js";
 import { ToDoContext } from "./ToDoContext/ToDoContext.js";
 import { Modal } from "./Modal/index.js";
 import { TodoForm } from "./components/TodoForm.js";
+import { TodoError } from "./components/TodoError.js";
+import { TodoLoading } from "./components/TodoLoading.js";
+import { EmptyTodo } from "./components/EmptyTodo.js";
 function AppUI() {
 
     const { error,
@@ -27,13 +30,17 @@ function AppUI() {
             <TodoSearch />
 
 
-
+            
             <TodoList>
-                {loading && <p>loading....</p>}
-                {error && <p>Fatal Error....</p>}
-                {(!loading && !searchedToDos.length) && <p>create your first Task</p>}
+                {/* if loading = true render <TodoLoading/> */}
+                {loading && <TodoLoading/>}
+                {/* if error = true render <TodoError/> */}
+                {error && <TodoError/>}
+                {/* if loading is false and searchToDos.length=0 render <EmptyTodo/> */}
+                {(!loading && !searchedToDos.length) && <EmptyTodo/>}
 
 
+                 
 
                 {searchedToDos.map(item => (
                     <TodoItem

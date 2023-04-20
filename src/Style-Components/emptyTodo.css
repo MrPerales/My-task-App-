@@ -1,0 +1,14 @@
+.emptyContainer{
+    width: 30rem;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    margin-top: 3.5rem;
+    /* outline: 1px solid; */
+
+}
+.EmptyText{
+    padding:1.5rem ;
+    font-size: 2rem;
+}
