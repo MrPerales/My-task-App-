@@ -1,5 +1,24 @@
 .title-task{
     /* outline: 1px solid red; */
     text-align: center;
-    width: 36rem;
+    width: 100%;
+    min-width: 36rem;
+
+}
+
+/* media queries */
+@media (min-width:420px) {
+    .title-task{
+        margin: 0 auto;
+    }
+}
+@media (min-width:600px) {
+    .title-task{
+        margin: 0 auto;
+    }
+}
+@media (min-width:1250px) {
+    .title-task{
+        margin: 0 auto;
+    }
 }

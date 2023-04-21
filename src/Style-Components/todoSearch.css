@@ -1,7 +1,7 @@
 .input{
     display: flex;
     justify-content: center;
-    width: 36rem;
+    min-width: 36rem;
 }
 .inputSearch{
     width: 15rem;
@@ -20,4 +20,16 @@
     margin-top: 1.5rem;
     margin-left: .3rem;
     border-radius: .5rem;
+}
+
+
+/* media queries */
+@media (min-width:420px) {
+    
+}
+@media (min-width:600px) {
+   
+}
+@media (min-width:1250px) {
+    
 }

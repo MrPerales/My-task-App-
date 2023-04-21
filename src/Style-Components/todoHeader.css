@@ -1,8 +1,12 @@
 .nav {
-    width: 36rem;
+    /* width: 100%; */
+     min-width: 36rem;
+    /*max-width: 100%; */
     /* gradiente */
     background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A49F9 109.75%);
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .navTitle {
@@ -28,7 +32,6 @@
 
 .welcome {
     margin: 0 auto;
-    width: 15rem;
 }
 
 .welcome p {
@@ -62,4 +65,24 @@
     background: rgba(46, 58, 89, 1);
     border-radius: 100px 100px 0 0;
    
+}
+
+/* media queries */
+@media (min-width:420px) {
+    
+    .bubble::after{
+        right: 35rem;
+    }
+}
+@media (min-width:600px) {
+   
+    .bubble::after{
+        right: 55rem;
+    }
+}
+@media (min-width:900px) {
+    
+    .bubble::after{
+      right: 85rem;
+    }
 }

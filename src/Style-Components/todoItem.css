@@ -1,29 +1,64 @@
-.checkAndClose{
+.checkAndClose {
     display: flex;
     justify-content: space-between;
     /* margin-top: .5rem; */
     margin: 1rem 1rem 0rem 1rem;
 }
 
-li p{
+li p {
     /* padding: .5rem; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-left: 4rem;
+    padding: .2rem .5rem;
+
     width: 22rem;
-    white-space: normal;
-    
-    overflow: scroll;
+    /* white-space: normal; */
+    overflow: auto;
 }
-.todoItem-p--completed{
+
+.todoItem-p--completed {
     text-decoration: line-through;
 }
-.Icon{
+
+.Icon {
     cursor: pointer;
     font-size: 1.6rem;
     font-weight: bold;
 }
+
 .icon-check--active {
     color: #4caf50;
 }
-.icon-delate:hover{
+
+.icon-delate:hover {
     color: red;
+}
+
+/* media queries */
+@media (min-width:420px) {
+    li p {
+        
+        margin-left: 4rem;
+        padding: .2rem .5rem;
+        /* outline: 1px solid; */
+        width: 27rem;
+        height: 3.5rem;
+
+    }
+    
+}
+
+@media (min-width:600px) {
+    li p {
+        
+        margin-left: 4rem;
+        padding: .2rem .5rem;
+        /* outline: 1px solid; */
+        width: 30rem;
+        height: 3.5rem;
+    }
+}
+
+@media (min-width:1250px) {
+
 }

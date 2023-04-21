@@ -1,11 +1,11 @@
 .loadingContainer{
     display: flex;
     flex-direction: column;
-    width: 30rem;
+    /* width: 30rem; */
     gap: 1.5rem;
 }
 .loadingTodo{
-    width: 100%;
+    width: 30rem;
     height: 7rem;
     border-radius: 1rem;
     background:linear-gradient(0deg,rgba(250,250,250,1),rgb(200,199,199)) ;
@@ -20,4 +20,21 @@
         opacity: 0%;
     }
     
+}
+/* media queries */
+@media (min-width:420px) {
+    .loadingTodo{
+        width: 36rem;
+    }
+    
+}
+
+@media (min-width:600px) {
+    .loadingTodo{
+        width: 40rem;
+    }
+}
+
+@media (min-width:1250px) {
+
 }
