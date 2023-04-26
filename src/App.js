@@ -1,6 +1,17 @@
 import React from "react";
-import { AppUI } from "./AppUI.js";
-import { ToDoProvider } from "./ToDoContext/ToDoContext.js";
+
+import { useToDos } from "./useToDos.js";
+import { TodoHeader } from "./components/TodoHeader.js";
+import { TodoCounter } from "./components/TodoCounter.js";
+import { TodoSearch } from "./components/TodoSearch.js";
+import { TodoList } from "./components/TodoList.js";
+import { CreateTodoButton } from "./components/CreateTodoButton.js";
+import { TodoItem } from "./components/TodoItem.js";
+import { Modal } from "./Modal/index.js";
+import { TodoForm } from "./components/TodoForm.js";
+import { TodoError } from "./components/TodoError.js";
+import { TodoLoading } from "./components/TodoLoading.js";
+import { EmptyTodo } from "./components/EmptyTodo.js";
 
 // const defaultToDos = [
 //   {
@@ -33,13 +44,81 @@ import { ToDoProvider } from "./ToDoContext/ToDoContext.js";
 
 function App() {
 
+  const {
+    error,
+    loading,
+    searchedToDos,
+    completeToDo,
+    deleteToDo,
+    openModal,
+    setOpenModal,
+    totalTask,
+    completedTask,
+    searchValue,
+    setSearchValue,
+    addToDo,
+    // setOpenModal
+  } = useToDos();
 
   return (
-    <ToDoProvider>
-      <AppUI/>
-    </ToDoProvider>
+    <>
+      <TodoHeader />
+      <TodoCounter
+        totalTask={totalTask}
+        completedTask={completedTask}
+      />
 
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
+
+
+
+      <TodoList>
+        {/* if loading = true render <TodoLoading/> */}
+        {loading && <TodoLoading />}
+        {/* if error = true render <TodoError/> */}
+        {error && <TodoError />}
+        {/* if loading is false and searchToDos.length=0 render <EmptyTodo/> */}
+        {(!loading && !searchedToDos.length) && <EmptyTodo />}
+
+
+
+
+        {searchedToDos.map(item => (
+          <TodoItem
+            key={item.text}
+            text={item.text}
+            completed={item.completed}
+            onComplete={() => completeToDo(item.text)}
+            onDelete={() => deleteToDo(item.text)}
+          />
+        ))
+        }
+
+      </TodoList>
+
+      {/* if openModal is True render that*/}
+      {openModal && (
+        <Modal>
+          <TodoForm
+            addToDo={addToDo}
+            setOpenModal={setOpenModal}
+          />
+        </Modal>
+      )}
+
+
+
+      <CreateTodoButton
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+      />
+
+    </>
   );
+
 }
 
 export default App;
