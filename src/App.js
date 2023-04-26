@@ -77,9 +77,14 @@ function App() {
         Error={error}
         loading={loading}
         searchedToDos={searchedToDos}
+        totalTask={totalTask}
+
         onError={() => <TodoError />}
         onLoading={() => <TodoLoading />}
         onEmptyTodo={() => <EmptyTodo />}
+        onEmptySearchResults={() =>
+          <p> there are not result to: {searchValue}</p>
+        }
 
         render={item => (
           <TodoItem
@@ -91,7 +96,18 @@ function App() {
           />
         )}
 
-      />
+      >
+        {/* children */}
+        {/* {item => (
+          <TodoItem
+            key={item.text}
+            text={item.text}
+            completed={item.completed}
+            onComplete={() => completeToDo(item.text)}
+            onDelete={() => deleteToDo(item.text)}
+          />
+        )} */}
+      </TodoList>
 
 
       {/* if openModal is True render that*/}

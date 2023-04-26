@@ -1,6 +1,8 @@
 import React from "react";
 import '../Style-Components/todoList.css'
 function TodoList(props) {
+    const renderFunction= props.children || props.render
+
     return (
         <section className="todoListSection">
             {/* if loading = true render <TodoLoading/> */}
@@ -8,12 +10,16 @@ function TodoList(props) {
             {/* if error = true render <TodoError/> */}
 
             {props.Error && props.onError()}
-            {/* if loading is false and searchToDos.length=0 render <EmptyTodo/> */}
-            {(!props.loading && !props.searchedToDos.length) && props.onEmptyTodo()}
+            {/* if loading is false and searchToDos.length  render <EmptyTodo/> */}
+            {(!props.loading && !props.totalTask) && props.onEmptyTodo()}
+            {/* if totalTask is true and searchedToDos is null  render onEmptySearchResults */}
+
+            {(!!props.totalTask && !props.searchedToDos.length)&& props.onEmptySearchResults()}
+
 
             <ul>
             {/* render list*/}
-            {props.searchedToDos.map(props.render)}
+            {props.searchedToDos.map(renderFunction)}
             </ul>
         </section>
     );
