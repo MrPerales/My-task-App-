@@ -73,20 +73,15 @@ function App() {
         setSearchValue={setSearchValue}
       />
 
+      <TodoList
+        Error={error}
+        loading={loading}
+        searchedToDos={searchedToDos}
+        onError={() => <TodoError />}
+        onLoading={() => <TodoLoading />}
+        onEmptyTodo={() => <EmptyTodo />}
 
-
-      <TodoList>
-        {/* if loading = true render <TodoLoading/> */}
-        {loading && <TodoLoading />}
-        {/* if error = true render <TodoError/> */}
-        {error && <TodoError />}
-        {/* if loading is false and searchToDos.length=0 render <EmptyTodo/> */}
-        {(!loading && !searchedToDos.length) && <EmptyTodo />}
-
-
-
-
-        {searchedToDos.map(item => (
+        render={item => (
           <TodoItem
             key={item.text}
             text={item.text}
@@ -94,10 +89,10 @@ function App() {
             onComplete={() => completeToDo(item.text)}
             onDelete={() => deleteToDo(item.text)}
           />
-        ))
-        }
+        )}
 
-      </TodoList>
+      />
+
 
       {/* if openModal is True render that*/}
       {openModal && (
