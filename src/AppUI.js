@@ -23,7 +23,9 @@ function AppUI() {
         totalTask,
         completedTask,
         searchValue,
-        setSearchValue
+        setSearchValue,
+        addToDo,
+        // setOpenModal
     } = React.useContext(ToDoContext);
 
     return (
@@ -68,7 +70,10 @@ function AppUI() {
             {/* if openModal is True render that*/}
             {openModal && (
                 <Modal>
-                    <TodoForm/>
+                    <TodoForm
+                        addToDo={addToDo}
+                        setOpenModal={setOpenModal}
+                    />
                 </Modal>
             )}
 
