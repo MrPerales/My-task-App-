@@ -1,7 +1,7 @@
 import React from "react";
 import '../Style-Components/todoSearch.css';
 
-function TodoSearch({searchValue,setSearchValue}){
+function TodoSearch({searchValue,setSearchValue,loading}){
 
 
     //  methods for onChange 
@@ -17,6 +17,8 @@ function TodoSearch({searchValue,setSearchValue}){
                 placeholder="search task"
                 value={searchValue}
                 onChange={onSearchValueChange}
+                // simulacion de carga
+                disabled={loading}
             >
             </input>
             {/* <button className="searchBtn">🔍</button> */}

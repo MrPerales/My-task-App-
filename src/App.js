@@ -66,11 +66,13 @@ function App() {
       <TodoCounter
         totalTask={totalTask}
         completedTask={completedTask}
+        loading={loading}
       />
 
       <TodoSearch
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        loading={loading}
       />
 
       <TodoList

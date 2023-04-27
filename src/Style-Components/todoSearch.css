@@ -21,6 +21,9 @@
     margin-left: .3rem;
     border-radius: .5rem;
 }
+.searchBtn:disabled{
+    opacity: 25%;
+}
 
 
 /* media queries */
