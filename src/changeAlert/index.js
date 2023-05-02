@@ -1,19 +1,23 @@
 import React from "react";
-import { withStorageListener } from "./withStorageAlert";
+import { useStorageListener } from "./useStorageAlert";
 import '../Style-Components/changeAlert.css'
 
 
-function ChangeAlert({ show, toggleShow }) {
+function ChangeAlert({synchronize}) {
+
+   const { show, toggleShow }=useStorageListener(synchronize)
+
+
     if (show) {
         return (
             <div className="reloadContainer">
                 <div>
-                    <p className="reloadText"> There were changes!</p>
+                    <p className="reloadText">Something Changed!</p>
                     <button
                         className="reloadButton"
                         onClick={() => toggleShow(false)}
                     >
-                        Reload information
+                        Refresh
                     </button>
 
                 </div>
@@ -25,7 +29,7 @@ function ChangeAlert({ show, toggleShow }) {
 
 }
 
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert)
 
 
-export { ChangeAlertWithStorageListener };
+
+export { ChangeAlert};

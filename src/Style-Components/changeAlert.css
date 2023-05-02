@@ -11,6 +11,7 @@
 
     position: fixed;
     color: white;
+    z-index: 2;
 }
 
 .reloadContainer div {

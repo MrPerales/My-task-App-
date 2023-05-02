@@ -12,7 +12,7 @@ import { TodoForm } from "./components/TodoForm.js";
 import { TodoError } from "./components/TodoError.js";
 import { TodoLoading } from "./components/TodoLoading.js";
 import { EmptyTodo } from "./components/EmptyTodo.js";
-import { ChangeAlertWithStorageListener } from "./changeAlert/index.js";
+import { ChangeAlert } from "./changeAlert/index.js";
 
 // const defaultToDos = [
 //   {
@@ -131,7 +131,7 @@ function App() {
         openModal={openModal}
       />
 
-        <ChangeAlertWithStorageListener
+        <ChangeAlert
             synchronize={synchronizedToDos}
         />
 
