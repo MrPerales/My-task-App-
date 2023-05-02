@@ -4,7 +4,9 @@ function useLocalStorage(itemName, initialValue) {
   const [error,setError]=React.useState(false);
   const [loading,setLoading]=React.useState(true)
   const [item, setItem] = React.useState(initialValue);
+  const [synchronizedItem,setSynchronizedItem]=React.useState(true);
 
+  // agregamos un segundo parametro un [] para que se ejecute solo una vez el efectp
   React.useEffect(() => {
     setTimeout(() => {
       try{
@@ -23,12 +25,13 @@ function useLocalStorage(itemName, initialValue) {
       }
       setItem(parsedItem);
       setLoading(false);
+      setSynchronizedItem(true)
       }catch{
         setError(true) 
       }
      
-    }, 2000);
-  });
+    }, 2500);
+  },[synchronizedItem]);
 
  // save Task 
   const saveToDos = (newItem) => {
@@ -43,12 +46,19 @@ function useLocalStorage(itemName, initialValue) {
       setError(true);
     }
   };
+  const synchronizeItem=()=>{
+    // como no estamos sincronizados mostramos el estado de carga 
+    setLoading(true);
+    // cambiamos el estado para no estemos sincronizando ni cargando 
+    setSynchronizedItem(false);
+  }
 
   return {
     item,
     saveToDos,
     loading,
     error,
+    synchronizeItem,
   };
 
 }

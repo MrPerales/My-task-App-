@@ -12,6 +12,7 @@ import { TodoForm } from "./components/TodoForm.js";
 import { TodoError } from "./components/TodoError.js";
 import { TodoLoading } from "./components/TodoLoading.js";
 import { EmptyTodo } from "./components/EmptyTodo.js";
+import { ChangeAlertWithStorageListener } from "./changeAlert/index.js";
 
 // const defaultToDos = [
 //   {
@@ -57,6 +58,7 @@ function App() {
     searchValue,
     setSearchValue,
     addToDo,
+    synchronizedToDos,
     // setOpenModal
   } = useToDos();
 
@@ -128,6 +130,13 @@ function App() {
         setOpenModal={setOpenModal}
         openModal={openModal}
       />
+
+        <ChangeAlertWithStorageListener
+            synchronize={synchronizedToDos}
+        />
+
+
+
 
     </>
   );

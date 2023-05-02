@@ -1,0 +1,49 @@
+.reloadContainer {
+    background: rgba(32, 35, 41, .8);
+    text-align: center;
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    color: white;
+}
+
+.reloadContainer div {
+
+    background-color: rgba(242, 245, 255, 1);
+    width: 36rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    border-radius: 1rem;
+}
+
+.reloadText {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.reloadButton {
+    border-radius: 1rem;
+    /* border: none; */
+    cursor: pointer;
+    width: 15rem;
+    height: 4rem;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    background-color:  rgba(229, 234, 252, 1);
+}
+
+.reloadButton:hover {
+    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A49F9 109.75%);
+    color: #fff;
+
+}

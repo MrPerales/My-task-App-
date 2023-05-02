@@ -18,8 +18,8 @@ function TodoList(props) {
 
 
             <ul>
-            {/* render list*/}
-            {props.searchedToDos.map(renderFunction)}
+            {/* render list //pops.loading because the list is update */}
+            {!props.loading && props.searchedToDos.map(renderFunction)}
             </ul>
         </section>
     );

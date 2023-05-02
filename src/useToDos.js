@@ -9,7 +9,8 @@ function useToDos() {
     item: toDos,
     saveToDos:saveToDos, // saveItem:saveToDos
     loading,
-    error
+    error,
+    synchronizeItem:synchronizedToDos,
   } = useLocalStorage('ToDos_V1', []);
 
   const [openModal, setOpenModal] = React.useState(false);
@@ -79,6 +80,7 @@ function useToDos() {
       setOpenModal,
       // saveToDos,
       addToDo,
+      synchronizedToDos,
     };
 }
 
