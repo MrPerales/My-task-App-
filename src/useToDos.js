@@ -65,23 +65,28 @@ function useToDos() {
     newToDos.splice(toDoIndex, 1)
     saveToDos(newToDos)
   }
+  const states={
+    error,
+    loading,
+    totalTask,
+    completedTask,
+    searchValue,
+    searchedToDos,
+    openModal,
+    
+  }
+  const statesUpdates={
 
-  return{
-      error,
-      loading,
-      totalTask,
-      completedTask,
-      searchValue,
-      setSearchValue,
-      searchedToDos,
-      completeToDo,
-      deleteToDo,
-      openModal,
-      setOpenModal,
-      // saveToDos,
-      addToDo,
-      synchronizedToDos,
-    };
+    setSearchValue,
+    completeToDo,
+    deleteToDo,
+    setOpenModal,
+    // saveToDos,
+    addToDo,
+    synchronizedToDos,
+  }
+
+  return{states,statesUpdates};
 }
 
 export { useToDos };

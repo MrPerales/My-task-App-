@@ -44,23 +44,25 @@ import { ChangeAlert } from "./changeAlert/index.js";
 // ];
 
 function App() {
-
+  const { states, statesUpdates } = useToDos();
   const {
     error,
-    loading,
     searchedToDos,
-    completeToDo,
-    deleteToDo,
-    openModal,
-    setOpenModal,
+    loading,
     totalTask,
+    openModal,
     completedTask,
     searchValue,
+  } = states;
+  const {
     setSearchValue,
+    completeToDo,
+    deleteToDo,
+    setOpenModal,
     addToDo,
     synchronizedToDos,
     // setOpenModal
-  } = useToDos();
+  } = statesUpdates;
 
   return (
     <>
@@ -131,9 +133,9 @@ function App() {
         openModal={openModal}
       />
 
-        <ChangeAlert
-            synchronize={synchronizedToDos}
-        />
+      <ChangeAlert
+        synchronize={synchronizedToDos}
+      />
 
 
 
