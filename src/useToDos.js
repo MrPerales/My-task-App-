@@ -7,11 +7,11 @@ function useToDos() {
   //hooks 
   const {
     item: toDos,
-    saveToDos:saveToDos, // saveItem:saveToDos
+    saveToDos: saveToDos, // saveItem:saveToDos
     loading,
     error,
-    synchronizeItem:synchronizedToDos,
-  } = useLocalStorage('ToDos_V1', []);
+    synchronizeItem: synchronizedToDos,
+  } = useLocalStorage('ToDos_V2', []);
 
   const [openModal, setOpenModal] = React.useState(false);
   //    [array, function] 
@@ -37,17 +37,20 @@ function useToDos() {
   }
   // add ToDo
   const addToDo = (text) => {
+    // mandamos de parametro el array para generar los ids
+    const id = newToDoId(toDos);
     const newToDos = [...toDos];
     newToDos.push({
       completed: false,
       text,
+      id,
     });
     saveToDos(newToDos);
   }
   //  add check
-  const completeToDo = (text) => {
+  const completeToDo = (id) => {
     // search the index
-    const toDoIndex = toDos.findIndex((item) => item.text === text)
+    const toDoIndex = toDos.findIndex((item) => item.id === id)
 
     const newToDos = [...toDos];
     newToDos[toDoIndex].completed = true;
@@ -56,16 +59,16 @@ function useToDos() {
 
   }
   // delete task
-  const deleteToDo = (text) => {
+  const deleteToDo = (id) => {
     // search index
-    const toDoIndex = toDos.findIndex((item) => item.text === text);
+    const toDoIndex = toDos.findIndex((item) => item.id === id);
     const newToDos = [...toDos];
     // splice elimina un elemento del array 
     //       .splice(index,elementos a eliminar )
     newToDos.splice(toDoIndex, 1)
     saveToDos(newToDos)
   }
-  const states={
+  const states = {
     error,
     loading,
     totalTask,
@@ -73,9 +76,9 @@ function useToDos() {
     searchValue,
     searchedToDos,
     openModal,
-    
+
   }
-  const statesUpdates={
+  const statesUpdates = {
 
     setSearchValue,
     completeToDo,
@@ -86,7 +89,20 @@ function useToDos() {
     synchronizedToDos,
   }
 
-  return{states,statesUpdates};
+  return { states, statesUpdates };
 }
 
+const newToDoId = todoList => {
+  if (!todoList.length) {
+    return 1;
+  }
+
+  const idList = todoList.map(item => item.id)
+  // regresa el numero mas grande del array 
+  const idMax = Math.max(...idList);
+  return idMax + 1;
+
+
+
+}
 export { useToDos };

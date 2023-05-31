@@ -20,12 +20,18 @@ li p {
     text-decoration: line-through;
 }
 
-.Icon {
+.icon {
     cursor: pointer;
     font-size: 1.6rem;
     font-weight: bold;
 }
-
+.containerIconEdit-Delete{
+    display: flex;
+    gap: 1rem;
+}
+.icon-edit:hover{
+    color:rgb(47, 208, 248);
+}
 .icon-check--active {
     color: #4caf50;
 }

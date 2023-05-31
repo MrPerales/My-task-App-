@@ -66,11 +66,12 @@ function HomePage() {
 
         render={item => (
           <TodoItem
-            key={item.text}
+            key={item.id}
             text={item.text}
             completed={item.completed}
-            onComplete={() => completeToDo(item.text)}
-            onDelete={() => deleteToDo(item.text)}
+            onEdit={()=>console.log('edit')}
+            onComplete={() => completeToDo(item.id)}
+            onDelete={() => deleteToDo(item.id)}
           />
         )}
 
