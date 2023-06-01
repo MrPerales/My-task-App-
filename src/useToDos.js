@@ -13,7 +13,7 @@ function useToDos() {
     synchronizeItem: synchronizedToDos,
   } = useLocalStorage('ToDos_V2', []);
 
-  const [openModal, setOpenModal] = React.useState(false);
+  // const [openModal, setOpenModal] = React.useState(false);
   //    [array, function] 
   const [searchValue, setSearchValue] = React.useState('');
 
@@ -58,6 +58,19 @@ function useToDos() {
     saveToDos(newToDos);
 
   }
+    //  Edit check
+    const editToDo = (id,newText) => {
+      // search the index
+      const toDoIndex = toDos.findIndex((item) => item.id === id)
+  
+      const newToDos = [...toDos];
+      newToDos[toDoIndex].text = newText;
+  
+      saveToDos(newToDos);
+  
+    }
+
+
   // delete task
   const deleteToDo = (id) => {
     // search index
@@ -68,6 +81,11 @@ function useToDos() {
     newToDos.splice(toDoIndex, 1)
     saveToDos(newToDos)
   }
+
+
+
+
+
   const states = {
     error,
     loading,
@@ -75,7 +93,7 @@ function useToDos() {
     completedTask,
     searchValue,
     searchedToDos,
-    openModal,
+    // openModal,
 
   }
   const statesUpdates = {
@@ -83,9 +101,10 @@ function useToDos() {
     setSearchValue,
     completeToDo,
     deleteToDo,
-    setOpenModal,
+    // setOpenModal,
     // saveToDos,
     addToDo,
+    editToDo,
     synchronizedToDos,
   }
 
