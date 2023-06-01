@@ -1,56 +1,62 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import '../Style-Components/todoForm.css'
 
-function TodoForm({addToDo,setOpenModal}) {
+function TodoForm(props) {
 
     const [newToDoValue, setNewToDoValue] = React.useState('');
-
+    const navigate=useNavigate();
     const onChange = (event) => {
         setNewToDoValue(event.target.value)
 
     }
 
     const onCancel = () => {
-        setOpenModal(false);
+        navigate('/')
+      
     }
 
     const onSubmit = (event) => {
         event.preventDefault();
         //if the user do not write  any task
-        if(newToDoValue.length <=0)return;
+        if (newToDoValue.length <= 0) return;
         // else
-        addToDo(newToDoValue);
-        //para ceerar la ventana al agregar una Task 
-        setOpenModal(false);
+        props.submitEvent(newToDoValue);
+        navigate('/')
+
     }
     return (
-        <form onSubmit={onSubmit}>
+        <div className='container-ToDoForm'>
+            <form onSubmit={onSubmit}>
 
-            <label className="">Write your New Task</label>
+                <label className="formTitle">{props.label}</label>
 
-            <textarea
-                value={newToDoValue}
-                onChange={onChange}
-                placeholder="Write Your Task"
-            >
-            </textarea>
-            <div className="ButtonsContainer">
-                <button
-                    className="cancelBtn"
-                    type="button"
-                    onClick={onCancel}
+                <textarea
+                    value={newToDoValue}
+                    onChange={onChange}
+                    placeholder="Write Your Task"
                 >
-                    Cancel
-                </button>
-                <button
-                    className="addBtn"
-                    type="submit"
-                >
-                    Add
-                </button>
+                </textarea>
+                <div className="ButtonsContainer">
+                    <button
+                        className="cancelBtn"
+                        type="button"
+                        onClick={onCancel}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className="addBtn"
+                        type="submit"
+                    >
+                        {props.submitText}
+                    </button>
 
-            </div>
-        </form>
+                </div>
+            </form>
+        </div>
+
     );
 }
 

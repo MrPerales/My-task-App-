@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useToDos } from "../useToDos";
 import { TodoHeader } from "../components/TodoHeader";
@@ -8,7 +9,6 @@ import { TodoList } from "../components/TodoList";
 import { CreateTodoButton } from "../components/CreateTodoButton.js";
 import { TodoItem } from "../components/TodoItem.js";
 import { Modal } from "../Modal/index.js";
-import { TodoForm } from "../components/TodoForm.js";
 import { TodoError } from "../components/TodoError.js";
 import { TodoLoading } from "../components/TodoLoading.js";
 import { EmptyTodo } from "../components/EmptyTodo.js";
@@ -16,13 +16,15 @@ import { ChangeAlert } from "../changeAlert/index.js";
 
 
 function HomePage() {
+
+  const navigate = useNavigate();
   const { states, statesUpdates } = useToDos();
   const {
     error,
     searchedToDos,
     loading,
     totalTask,
-    openModal,
+    // openModal,
     completedTask,
     searchValue,
   } = states;
@@ -30,8 +32,8 @@ function HomePage() {
     setSearchValue,
     completeToDo,
     deleteToDo,
-    setOpenModal,
-    addToDo,
+    // setOpenModal,
+    // addToDo,
     synchronizedToDos,
     // setOpenModal
   } = statesUpdates;
@@ -69,7 +71,7 @@ function HomePage() {
             key={item.id}
             text={item.text}
             completed={item.completed}
-            onEdit={()=>console.log('edit')}
+            onEdit={()=>navigate('/edit/'+ item.id)}
             onComplete={() => completeToDo(item.id)}
             onDelete={() => deleteToDo(item.id)}
           />
@@ -90,20 +92,21 @@ function HomePage() {
 
 
       {/* if openModal is True render that*/}
-      {openModal && (
+      {/* {openModal && (
         <Modal>
           <TodoForm
             addToDo={addToDo}
             setOpenModal={setOpenModal}
           />
         </Modal>
-      )}
+      )} */}
 
 
 
       <CreateTodoButton
-        setOpenModal={setOpenModal}
-        openModal={openModal}
+        onClick={()=>navigate('/new')}
+        // setOpenModal={setOpenModal}
+        // openModal={openModal}
       />
 
       <ChangeAlert

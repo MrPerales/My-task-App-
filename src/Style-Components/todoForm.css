@@ -5,7 +5,15 @@
   --background-Modal:rgba(242, 245, 255, 1) ;
     
 }
-
+.container-ToDoForm{
+    display: flex;
+    outline: 1px solid ;
+    align-items: center;
+    justify-content: center;
+    background:var(--gradient-Btn);
+    height: 100vh;
+    
+}
 form{
     width: 36rem;
     height: 20rem;
@@ -20,6 +28,10 @@ label{
     color: #000;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+.formTitle{
+    display: flex;
+    justify-content: center;
 }
 textarea{
     width: 29rem;

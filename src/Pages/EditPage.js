@@ -1,8 +1,14 @@
 import React from "react";
+import { TodoForm } from "../components/TodoForm.js";
+
 
 function EditToDoPage(){
     return (
-        <p>EditToDoPage</p>
+        <TodoForm
+        label='Edit your task'
+        submitText='Edit'
+        submitEvent={()=>console.log('edit ToDos')}
+    />
     );
 }
 
