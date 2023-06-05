@@ -11,4 +11,15 @@ function TodoLoading(){
     )
 
 }
-export {TodoLoading}
+function LoadingSpinner(){
+    return(
+        <>
+            <div className="loader-container">
+                <div className="spinner"></div>
+                <h3>Loading...</h3>
+            </div>
+        
+        </>
+    )
+}
+export {TodoLoading,LoadingSpinner}

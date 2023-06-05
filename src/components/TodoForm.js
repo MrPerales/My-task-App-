@@ -5,7 +5,7 @@ import '../Style-Components/todoForm.css'
 
 function TodoForm(props) {
 
-    const [newToDoValue, setNewToDoValue] = React.useState('');
+    const [newToDoValue, setNewToDoValue] = React.useState(props.defaultToDoText ||'');
     const navigate=useNavigate();
     const onChange = (event) => {
         setNewToDoValue(event.target.value)
@@ -24,6 +24,7 @@ function TodoForm(props) {
         // else
         props.submitEvent(newToDoValue);
         navigate('/')
+        
 
     }
     return (
@@ -33,6 +34,7 @@ function TodoForm(props) {
                 <label className="formTitle">{props.label}</label>
 
                 <textarea
+                    disabled={props.loading}
                     value={newToDoValue}
                     onChange={onChange}
                     placeholder="Write Your Task"
@@ -47,6 +49,7 @@ function TodoForm(props) {
                         Cancel
                     </button>
                     <button
+                        disabled={props.loading}
                         className="addBtn"
                         type="submit"
                     >

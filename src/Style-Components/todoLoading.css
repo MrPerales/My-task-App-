@@ -1,3 +1,4 @@
+/* TodoLoading */
 .loadingContainer{
     display: flex;
     flex-direction: column;
@@ -12,6 +13,33 @@
     animation: loadingAnimation 3s ease-in-out infinite;
     margin-top: 1rem;
 }
+/* LoadingSpinner */
+.loader-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.spinner{
+  width: 6.4rem;
+  height: 6.4rem;
+  border: 1rem dashed;
+
+  border-color:#9C2CF3 ;
+  /* border-color:#3A49F9 ; */
+
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+.loader-container h3{
+    font-size: 1.8rem;
+}
+
+
+/* animations */
 @keyframes loadingAnimation {
     0%,100%{
         opacity: 100%;
@@ -21,6 +49,18 @@
     }
     
 }
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 /* media queries */
 @media (min-width:420px) {
     .loadingTodo{

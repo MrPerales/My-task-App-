@@ -58,17 +58,23 @@ function useToDos() {
     saveToDos(newToDos);
 
   }
-    //  Edit check
-    const editToDo = (id,newText) => {
-      // search the index
-      const toDoIndex = toDos.findIndex((item) => item.id === id)
-  
-      const newToDos = [...toDos];
-      newToDos[toDoIndex].text = newText;
-  
-      saveToDos(newToDos);
-  
-    }
+  // get toDo del localStorage para la edit
+  const getToDo=(id)=>{
+    const toDoIndex=toDos.findIndex((item)=>item.id===id)
+    return toDos[toDoIndex];
+
+  }
+  //  Edit check
+  const editToDo = (id, newText) => {
+    // search the index
+    const toDoIndex = toDos.findIndex((item) => item.id === id)
+
+    const newToDos = [...toDos];
+    newToDos[toDoIndex].text = newText;
+
+    saveToDos(newToDos);
+
+  }
 
 
   // delete task
@@ -94,6 +100,7 @@ function useToDos() {
     searchValue,
     searchedToDos,
     // openModal,
+    getToDo,
 
   }
   const statesUpdates = {

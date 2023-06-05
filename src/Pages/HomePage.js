@@ -18,6 +18,7 @@ import { ChangeAlert } from "../changeAlert/index.js";
 function HomePage() {
 
   const navigate = useNavigate();
+
   const { states, statesUpdates } = useToDos();
   const {
     error,
@@ -71,7 +72,8 @@ function HomePage() {
             key={item.id}
             text={item.text}
             completed={item.completed}
-            onEdit={()=>navigate('/edit/'+ item.id)}
+            //    compartimos el stado del navegador para cargar mas rapido la page 
+            onEdit={()=>navigate('/edit/'+ item.id,{state:{item}})}
             onComplete={() => completeToDo(item.id)}
             onDelete={() => deleteToDo(item.id)}
           />
